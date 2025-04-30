@@ -1499,6 +1499,18 @@
             background: #f44336;
             transform: scale(1.1);
         }
+                /* Gallery Videos */
+        .gallery-container.videos .gallery-item {
+            height: 180px; /* Reduced from 250px */
+        }
+
+        .gallery-container.videos .gallery-item::after {
+            font-size: 2rem; /* Reduced from 3rem */
+        }
+
+        .gallery-container.videos .gallery-overlay p {
+            font-size: 1rem; /* Reduced from 1.2rem */
+        }
 
         /* Delete all reviews button */
         .delete-all-reviews {
@@ -1637,35 +1649,37 @@
             </div>
             
             <!-- Videos Gallery -->
-             <div class="gallery-item" data-video="img&vid/wedding video 1.mp4">
+            <div class="gallery-container videos">
+                <div class="gallery-item" data-video="img&vid/wedding video 1.mp4">
                     <img src="https://source.unsplash.com/PDX_a_82obo/400x400" alt="Concert Video 1">
                     <div class="gallery-overlay">
-                        <p>Live Performance - "Echoes of Tomorrow"</p>
+                        <p>Live Performance</p>
                     </div>
                     <div class="delete-media" data-type="video" data-id="8"><i class="fas fa-trash"></i></div>
                 </div>
-                <div class="gallery-item" data-video="img&vid">
-                    <img src="https://source.unsplash.com/PDX_a_82obo/400x400" alt="Concert Video 2">
-                    <div class="gallery-overlay">
-                        <p>Music Video - "Silent Reverie"</p>
+                    <div class="gallery-item" data-video="img&vid/wedding video 1.mp4">
+                        <img src="https://source.unsplash.com/PDX_a_82obo/400x400" alt="Concert Video 2">
+                        <div class="gallery-overlay">
+                            <p>LMusic Video - "Silent Reverie"</p>
+                        </div>
+                        <div class="delete-media" data-type="video" data-id="8"><i class="fas fa-trash"></i></div>
                     </div>
-                    <div class="delete-media" data-type="video" data-id="8"><i class="fas fa-trash"></i></div>
-                </div>
-                <div class="gallery-item" data-video="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4">
-                    <img src="https://source.unsplash.com/AuZJ-49L7xs/400x400" alt="Concert Video 3">
-                    <div class="gallery-overlay">
-                        <p>Behind the Scenes - Summer Tour</p>
-                    </div>
-                    <div class="delete-media" data-type="video" data-id="9"><i class="fas fa-trash"></i></div>
-                </div>
-                <div class="gallery-item" data-video="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4">
-                    <img src="https://source.unsplash.com/vq3boTHUg3w/400x400" alt="Concert Video 4">
-                    <div class="gallery-overlay">
+                    
+                        <div class="gallery-item" data-video="img&vid/wedding video 1.mp4">
+                            <img src="https://source.unsplash.com/PDX_a_82obo/400x400" alt="Concert Video 3">
+                            <div class="gallery-overlay">
+                                <p>Behind the Scenes - Summer Tour</p>
+                            </div>
+                            <div class="delete-media" data-type="video" data-id="8"><i class="fas fa-trash"></i></div>
+                        </div>
+                        
+                    <div class="gallery-item" data-video="img&vid/wedding video 1.mp4">
+                     <img src="https://source.unsplash.com/PDX_a_82obo/400x400" alt="Concert Video 4">
+                        <div class="gallery-overlay">
                         <p>Fan Compilation - Best Moments</p>
-                    </div>
-                    <div class="delete-media" data-type="video" data-id="10"><i class="fas fa-trash"></i></div>
+                            </div>
+                        <div class="delete-media" data-type="video" data-id="8"><i class="fas fa-trash"></i></div>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -3202,4 +3216,3 @@
     </script>
 </body>
 </html>
-
