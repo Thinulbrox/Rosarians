@@ -1,0 +1,3207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosarians - Official Website</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://rosarians.neocities.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://rosarians.neocities.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://rosarians.neocities.org/favicon-16x16.png">
+    <link rel="manifest" href="https://rosarians.neocities.org/site.webmanifest">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        :root {
+            --primary: #ff3e6c;
+            --primary-dark: #e6194b;
+            --secondary: #6a11cb;
+            --accent: #8a2be2;
+            --dark: #121212;
+            --light: #f5f5f5;
+            --text: #333;
+            --gradient: linear-gradient(135deg, #ff3e6c, #6a11cb);
+            --gradient-hover: linear-gradient(135deg, #e6194b, #5a0cb7);
+            --gradient-alt: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            transition: background-image 1s ease-in-out;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://rosarians.neocities.org/485730218_1439179414105622_3019281671317995500_n.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        img, video {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--light);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 62, 108, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--gradient-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 62, 108, 0.5);
+        }
+
+        .btn-alt {
+            background: var(--gradient-alt);
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+        }
+
+        .btn-alt:hover {
+            background: linear-gradient(135deg, #5a0cb7, #1e68e6);
+            box-shadow: 0 7px 20px rgba(106, 17, 203, 0.5);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 10px rgba(255, 62, 108, 0.5);
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 62, 108, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease;
+            z-index: -1;
+        }
+
+        .hero-bg.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(to right, #ff3e6c, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-style: italic;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://source.unsplash.com/random/1920x1080?band') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .about .content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+            border: 3px solid rgba(255, 62, 108, 0.3);
+        }
+
+        .about-image img:hover {
+            transform: scale(1.03);
+            border-color: var(--primary);
+        }
+        .hover\:shine::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-image: linear-gradient(to right, transparent 0%, #fff6 100%);
+            transform: skewX(-0.08turn) translateX(-180%);
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://source.unsplash.com/random/1920x1080?concert-crowd') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            margin: 0 10px;
+            border: none;
+            background: transparent;
+            color: var(--light);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 62, 108, 0.1);
+            border-color: var(--primary);
+        }
+
+        .tab-btn.active {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(255, 62, 108, 0.3);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 20px;
+            margin-top: 40px;
+            display: none;
+        }
+
+        .gallery-container.active {
+            display: grid;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-overlay p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: var(--light);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-container.videos .gallery-item::after {
+            content: '\f144';
+            font-family: 'Font Awesome 6 Free';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .gallery-container.videos .gallery-item:hover::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+            color: var(--primary);
+        }
+
+        /* Video player styles */
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- PRICING SECTION --- */
+        .pricing {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1920x1080?concert-stage') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .packages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .package {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px 30px;
+            width: 300px;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transition: all 0.3s ease;
+        }
+
+        .package:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .package-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #ff3e6c, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .package-price span {
+            font-size: 1rem;
+            opacity: 0.7;
+            -webkit-text-fill-color: var(--light);
+            color: var(--light);
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .package-features li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary);
+            margin-right: 8px;
+        }
+
+        /* Event types showcase */
+        .event-types-section {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://source.unsplash.com/random/1920x1080?music-event') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .event-types {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+        }
+
+        .event-type {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .event-type:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .event-type-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .event-type-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+
+        .event-type-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-type:hover .event-type-img img {
+            transform: scale(1.1);
+        }
+
+        .event-type-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .event-type-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .event-type-desc {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://source.unsplash.com/random/1920x1080?microphone') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Fix for select dropdowns */
+        select.form-control {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+            padding-right: 40px;
+        }
+
+        select.form-control option {
+            background-color: #333;
+            color: white;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Admin panel styles */
+        .admin-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-panel h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+        }
+
+        .admin-upload {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .admin-upload-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .admin-upload-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+        }
+
+        .admin-upload-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-upload-preview img,
+        .admin-upload-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .admin-upload-info {
+            flex: 1;
+        }
+
+        .admin-upload-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .admin-btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .admin-btn.approve {
+            background: #4caf50;
+            color: white;
+        }
+
+        .admin-btn.approve:hover {
+            background: #3d9140;
+            transform: translateY(-2px);
+        }
+
+        .admin-btn.reject {
+            background: #f44336;
+            color: white;
+        }
+
+        .admin-btn.reject:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        /* Quick upload */
+        .quick-upload {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .quick-upload-btn {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quick-upload-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .quick-upload-btn i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .quick-upload-btn:hover i {
+            transform: scale(1.1);
+        }
+
+        .quick-upload-btn p {
+            font-weight: 500;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 50px 0 20px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://source.unsplash.com/random/1920x1080?stage-lights') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 62, 108, 0.3);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow: auto;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            padding: 50px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        /* Admin login modal */
+        .admin-login-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-login-form h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+        }
+
+        /* Admin signup form - MINIMIZED */
+        .admin-signup-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 350px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-signup-form h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-tab {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--light);
+            opacity: 0.7;
+        }
+
+        .admin-tab.active {
+            opacity: 1;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .admin-tab:hover {
+            opacity: 1;
+        }
+
+        .admin-form-container {
+            display: none;
+        }
+
+        .admin-form-container.active {
+            display: block;
+        }
+
+        .admin-users-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .admin-user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-user-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-user-info {
+            flex: 1;
+        }
+
+        .admin-user-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .admin-user-role {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .admin-user-role.super {
+            background: var(--primary);
+            color: white;
+        }
+
+        .admin-user-role.admin {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .admin-user-role.editor {
+            background: #4caf50;
+            color: white;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .notification-message {
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 80px;
+                background-color: rgba(18, 18, 18, 0.95);
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-150%);
+                transition: transform 0.5s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .packages {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .package {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .admin-upload-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .admin-upload-actions {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 10px;
+            }
+        }
+
+        /* --- REVIEWS SECTION --- */
+        .reviews-section {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://source.unsplash.com/random/1920x1080?concert-audience') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .reviews-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .reviews-list {
+            margin-bottom: 40px;
+        }
+
+        .review-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .review-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .review-info {
+            flex: 1;
+        }
+
+        .review-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .review-rating {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .review-rating i {
+            color: #ffc107;
+            margin-right: 3px;
+        }
+
+        .review-content {
+            line-height: 1.7;
+        }
+
+        .review-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .star-rating {
+            display: flex;
+            margin-bottom: 20px;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #ccc;
+            transition: all 0.2s ease;
+            margin-right: 5px;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #ffc107;
+        }
+
+        /* File upload styles */
+        .drop-zone {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .drop-zone.active {
+            border-color: var(--primary);
+            background: rgba(255, 62, 108, 0.05);
+        }
+
+        .drop-zone i {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .drop-zone p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .file-upload-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .file-upload-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-upload-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .preview-item {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .preview-item img,
+        .preview-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .upload-progress {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .upload-progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Status styles for bookings */
+        .status-pending {
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        .status-confirmed {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .status-completed {
+            color: #2196f3;
+            font-weight: bold;
+        }
+
+        .status-cancelled {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        .status-select {
+            width: auto !important;
+            margin-right: 10px;
+        }
+
+        /* Media delete button styles */
+        .gallery-item .delete-media {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(244, 67, 54, 0.8);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .gallery-item:hover .delete-media {
+            opacity: 1;
+        }
+
+        .gallery-item .delete-media:hover {
+            background: #f44336;
+            transform: scale(1.1);
+        }
+
+        /* Delete all reviews button */
+        .delete-all-reviews {
+            margin-top: 20px;
+            background: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .delete-all-reviews:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-image">
+                    <img src="https://rosarians.neocities.org/logo.png" alt="Rosarians Logo">
+                </div>
+                <a href="#home" class="logo-text">
+                    <img src="https://rosarians.neocities.org/after_the_logo-.png" alt="Rosarians Logo" style="height: 50px;">
+                </a>
+            </div>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="adminLoginBtn">Admin</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Slider -->
+    <section id="home" class="hero">
+        <div class="hero-bg" style="background-image: url('https://source.unsplash.com/UUJFYJlXIyE/1600x900')"></div>
+        <div class="hero-bg" style="background-image: url('https://source.unsplash.com/VHt9pv_rC3A/1600x900')"></div>
+        <div class="hero-bg" style="background-image: url('https://source.unsplash.com/JAHdPHMoaEA/1600x900')"></div>
+        <div class="hero-bg" style="background-image: url('https://source.unsplash.com/O3ymvT7Wf9U/1600x900')"></div>
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Rosarians</h1>
+                <p>Transcending musical boundaries. Experience the magic of live music that speaks to your soul.</p>
+                <a href="#contact" class="btn pulse">Book Us Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="content">
+                <div class="about-text">
+                    <p>Rosarians is a dynamic musical group that brings together talented musicians with diverse backgrounds and influences. Founded in 2009, we've been crafting unforgettable musical experiences for audiences across the country.</p>
+                    <p>Our unique sound blends elements of rock, indie, and alternative music, creating a signature style that's both familiar and refreshingly original. Whether we're performing at intimate venues or large festivals, we bring the same passion and energy to every show.</p>
+                    <p>With over 200 live performances under our belt and over 15 years of excellence, the Rosarians have built a reputation for electrifying shows that leave audiences wanting more. Our commitment to musical excellence and authentic connection with our fans has made us one of the most sought-after bands in the region.</p>
+                    <a href="#gallery" class="btn" style="margin-top: 15px;">View Our Gallery</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://rosarians.neocities.org/485730218_1439179414105622_3019281671317995500_n.jpg" alt="Rosarians Band">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-tabs">
+                <button class="tab-btn active" data-tab="photos">Photos</button>
+                <button class="tab-btn" data-tab="videos">Videos</button>
+            </div>
+            
+            <!-- Photos Gallery -->
+            <div class="gallery-container photos active">
+                <div class="gallery-item">
+                    <img src="https://rosarians.neocities.org/at%20grand%20monarch.jpg" alt="Wedding Photo ">
+                    <div class="gallery-overlay">
+                        <p>At Grand monarch</p>
+                    </div>
+                    <div class="delete-media" data-type="photo" data-id="1"><i class="fas fa-trash"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://rosarians.neocities.org/at%20Pegasus%20Reef%20Wattala.jpg" alt="Wedding Photo ">
+                    <div class="gallery-overlay">
+                        <p>At Pegasus Reef-Wattala</p>
+                    </div>
+                    <div class="delete-media" data-type="photo" data-id="2"><i class="fas fa-trash"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://rosarians.neocities.org/at%20Avenra%20Gangaara.jpg" alt="Wedding Photo ">
+                    <div class="gallery-overlay">
+                        <p>At Avenra Gangaara</p>
+                    </div>
+                    <div class="delete-media" data-type="photo" data-id="3"><i class="fas fa-trash"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://rosarians.neocities.org/at%20Sawingir%20Hills..jpg" alt="Wedding Photo ">
+                    <div class="gallery-overlay">
+                        <p>At Sawingir Hills</p>
+                    </div>
+                    <div class="delete-media" data-type="photo" data-id="4"><i class="fas fa-trash"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://rosarians.neocities.org/at%20grand%20guardian.jpg" alt="Wedding Photo ">
+                    <div class="gallery-overlay">
+                        <p>Performing on Stage</p>
+                    </div>
+                    <div class="delete-media" data-type="photo" data-id="5"><i class="fas fa-trash"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://rosarians.neocities.org/At%20eagle's%20lakeside.jpg" alt="Wedding Photo ">
+                    <div class="gallery-overlay">
+                        <p>Members❤️🔥</p>
+                    </div>
+                    <div class="delete-media" data-type="photo" data-id="6"><i class="fas fa-trash"></i></div>
+                </div>
+            </div>
+            
+            <!-- Videos Gallery -->
+            <div class="gallery-container videos">
+                <div class="gallery-item" data-video="<div style='padding:177.78% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/1072994153?h=b22d913807&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' frameborder='0' allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media' style='position:absolute;top:0;left:0;width:100%;height:100%;' title='wedding video 1'></iframe></div><script src='https://player.vimeo.com/api/player.js'></script>">
+                    <img src="https://source.unsplash.com/v89zhr0iBFY/400x400" alt="Concert Video 1">
+                    <div class="gallery-overlay">
+                        <p>Live Performance - "Echoes of Tomorrow"</p>
+                    </div>
+                    <div class="delete-media" data-type="video" data-id="7"><i class="fas fa-trash"></i></div>
+                </div>
+                <div class="gallery-item" data-video="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4">
+                    <img src="https://source.unsplash.com/PDX_a_82obo/400x400" alt="Concert Video 2">
+                    <div class="gallery-overlay">
+                        <p>Music Video - "Silent Reverie"</p>
+                    </div>
+                    <div class="delete-media" data-type="video" data-id="8"><i class="fas fa-trash"></i></div>
+                </div>
+                <div class="gallery-item" data-video="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4">
+                    <img src="https://source.unsplash.com/AuZJ-49L7xs/400x400" alt="Concert Video 3">
+                    <div class="gallery-overlay">
+                        <p>Behind the Scenes - Summer Tour</p>
+                    </div>
+                    <div class="delete-media" data-type="video" data-id="9"><i class="fas fa-trash"></i></div>
+                </div>
+                <div class="gallery-item" data-video="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4">
+                    <img src="https://source.unsplash.com/vq3boTHUg3w/400x400" alt="Concert Video 4">
+                    <div class="gallery-overlay">
+                        <p>Fan Compilation - Best Moments</p>
+                    </div>
+                    <div class="delete-media" data-type="video" data-id="10"><i class="fas fa-trash"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Types Section -->
+    <section id="event-types" class="event-types-section">
+        <div class="container">
+            <h2 class="section-title">Event Types We Perform At</h2>
+            <div class="event-types">
+                <div class="event-type">
+                    <div class="event-type-img">
+                        <img src="https://rosarians.neocities.org/wedding.jpg" alt="Wedding">
+                    </div>
+                    <div class="event-type-content">
+                        <h3 class="event-type-title">Weddings</h3>
+                        <p class="event-type-desc">Make your special day unforgettable with our romantic and energetic performances.</p>
+                        <a href="#contact" class="btn" onclick="document.getElementById('eventType').value='wedding'">Book for Wedding</a>
+                    </div>
+                </div>
+                <div class="event-type">
+                    <div class="event-type-img">
+                        <img src="https://rosarians.neocities.org/Coperate.jpg" alt="Corporate Event">
+                    </div>
+                    <div class="event-type-content">
+                        <h3 class="event-type-title">Corporate Events</h3>
+                        <p class="event-type-desc">Elevate your corporate gatherings with professional entertainment that impresses.</p>
+                        <a href="#contact" class="btn" onclick="document.getElementById('eventType').value='corporate'">Book Corporate</a>
+                    </div>
+                </div>
+                <div class="event-type">
+                    <div class="event-type-img">
+                        <img src="https://rosarians.neocities.org/christmas.jpg" alt="Festival">
+                    </div>
+                    <div class="event-type-content">
+                        <h3 class="event-type-title">Festivals</h3>
+                        <p class="event-type-desc">We bring high-energy performances that get the crowd moving at any festival.</p>
+                        <a href="#contact" class="btn" onclick="document.getElementById('eventType').value='festival'">Book for Festival</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing</h2>
+            <div class="packages">
+                <div class="package">
+                    <h3 class="package-title">Standard</h3>
+                    <div class="package-price">Rs.150,000 <span>/ event</span></div>
+                    <ul class="package-features">
+                        <li>2-Hour Performance</li>
+                        <li>Standard Lighting Setup</li>
+                        <li>Sound Equipment Included</li>
+                        <li>1 Special Request Song</li>
+                        <li>Basic Travel (50 mile radius)</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="document.getElementById('package').value='standard'">Book Now</a>
+                </div>
+                
+                <div class="package">
+                    <h3 class="package-title">Premium</h3>
+                    <div class="package-price">Rs.200,000 <span>/ event</span></div>
+                    <ul class="package-features">
+                        <li>3-Hour Performance</li>
+                        <li>Premium Lighting Setup</li>
+                        <li>Professional Sound Equipment</li>
+                        <li>3 Special Request Songs</li>
+                        <li>Extended Travel (100 mile radius)</li>
+                        <li>Acoustic Pre-show Set</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="document.getElementById('package').value='premium'">Book Now</a>
+                </div>
+                
+                <div class="package">
+                    <h3 class="package-title">Ultimate</h3>
+                    <div class="package-price">Rs.250,000 <span>/ event</span></div>
+                    <ul class="package-features">
+                        <li>Full 4-Hour Performance</li>
+                        <li>Custom Light Show</li>
+                        <li>Top-tier Sound Equipment</li>
+                        <li>5 Special Request Songs</li>
+                        <li>National Travel Included</li>
+                        <li>Meet & Greet Session</li>
+                        <li>Professional Event Recording</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="document.getElementById('package').value='ultimate'">Book Now</a>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 50px;">
+                <p>Need a custom package? <a href="#contact" style="color: var(--primary); text-decoration: underline;" onclick="document.getElementById('package').value='custom'">Contact us</a> for tailored solutions for your specific event!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-container">
+                <div class="reviews-list">
+                    <!-- Sample reviews - these will be dynamically loaded from the database -->
+                    <div class="review-item">
+                        <div class="review-header">
+                            <!-- Avatar div has been removed -->
+                            <div class="review-info">
+                                <div class="review-name">Samantha D.</div>
+                                <div class="review-date">March 15, 2025</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-content">
+                            <p>The Rosarians performed at our wedding and they were absolutely incredible! Our guests couldn't stop talking about how amazing the music was. They created the perfect atmosphere and were so professional to work with. Highly recommend!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <!-- Avatar div has been removed -->
+                            <div class="review-info">
+                                <div class="review-name">Michael T.</div>
+                                <div class="review-date">February 28, 2025</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="review-content">
+                            <p>We hired the Rosarians for our company's annual gala and they exceeded all expectations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <!-- Avatar div has been removed -->
+                            <div class="review-info">
+                                <div class="review-name">Priya K.</div>
+                                <div class="review-date">January 10, 2025</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-content">
+                            <p>The Rosarians are simply phenomenal! They performed at our cultural festival and brought such a unique energy to the event. Their ability to blend different musical styles is impressive. Everyone was asking about them afterward. Worth every rupee!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Admin controls for reviews -->
+                <div class="text-center" id="reviewsAdminControls" style="display: none;">
+                    <button class="delete-all-reviews" id="deleteAllReviewsBtn">Delete All Reviews</button>
+                </div>
+                
+                <!-- Review Form -->
+                <div class="review-form">
+                    <h3 style="text-align: center; margin-bottom: 25px; font-family: 'Dancing Script', cursive; color: var(--primary);">Share Your Experience</h3>
+                    <form id="reviewForm">
+                        <div class="form-group">
+                            <label for="reviewName">Your Name</label>
+                            <input type="text" id="reviewName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Rating</label>
+                            <div class="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5" required>
+                                <label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewComment">Your Review</label>
+                            <textarea id="reviewComment" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn">Submit Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Booking</h2>
+            <form class="contact-form" id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+94 7X XXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Event Date</label>
+                    <input type="date" id="eventDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventType">Event Type</label>
+                    <select id="eventType" class="form-control" required>
+                        <option value="">Select Event Type</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="birthday">Birthday Party</option>
+                        <option value="festival">Festival</option>
+                        <option value="concert">Concert</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="package">Preferred Package</label>
+                    <select id="package" class="form-control" required>
+                        <option value="">Select Package</option>
+                        <option value="standard">Standard (Rs.150,000)</option>
+                        <option value="premium">Premium (Rs.200,000)</option>
+                        <option value="ultimate">Ultimate (Rs.250,000)</option>
+                        <option value="custom">Custom Package</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn">Send Booking Request</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Admin Section (Hidden by default) -->
+    <section id="admin" class="admin" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Admin Dashboard</h2>
+            
+            <!-- Admin Users Management Panel -->
+            <div class="admin-panel">
+                <h3>Admin Users Management</h3>
+                <div class="admin-users-list" id="adminUsersList">
+                    <!-- Admin users will be listed here dynamically -->
+                </div>
+                <div class="text-center" style="margin-top: 20px;">
+                    <button id="createAdminBtn" class="btn">Create New Admin</button>
+                </div>
+            </div>
+            
+            <!-- Quick Upload Section -->
+            <div class="quick-upload">
+                <div class="quick-upload-btn" id="quickUploadPhotos">
+                    <i class="fas fa-images"></i>
+                    <p>Upload Photos</p>
+                </div>
+                <div class="quick-upload-btn" id="quickUploadVideos">
+                    <i class="fas fa-video"></i>
+                    <p>Upload Videos</p>
+                </div>
+                <div class="quick-upload-btn" id="quickUploadBulk">
+                    <i class="fas fa-upload"></i>
+                    <p>Bulk Upload</p>
+                </div>
+            </div>
+            
+            <!-- Pending Approvals -->
+            <div class="admin-panel">
+                <h3>Recent Bookings</h3>
+                <div class="admin-upload" id="recentBookings">
+                    <!-- Bookings will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo-container" style="margin-bottom: 15px;">
+                        <div class="logo-image" style="width: 40px; height: 40px;">
+                            <img src="https://rosarians.neocities.org/logo.jpg" alt="Rosarians Logo">
+                        </div>
+                        <h3 style="margin-bottom: 0;">Rosarians</h3>
+                    </div>
+                    <p>Bringing unforgettable musical experiences to your events since 2009.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/rosarians_official_/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@ROSARIANS" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://web.facebook.com/rosariansfanpage" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: <a href="mailto:rosarianlanka@gmail.com">rosarianlanka@gmail.com</a></p>
+                    <p>Phone: +94 77 327 8821</p>
+                    <p>Based in: Wennappuwa Boralessa</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Rosarians. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-title">New Booking!</div>
+        <div class="notification-message" id="notificationMessage"></div>
+    </div>
+
+    <!-- Modal for Gallery Items -->
+    <div id="galleryModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content" id="galleryModalContent">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Modal for Admin Login -->
+  
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="admin-login-form">
+                <div class="admin-tabs">
+                    <div class="admin-tab active" data-tab="login">Login</div>
+                    <div class="admin-tab" data-tab="signup">Sign Up</div>
+                </div>
+                
+                <!-- Login Form -->
+                <div class="admin-form-container active" id="loginForm">
+                    <h3>Admin Login</h3>
+                    <div class="form-group">
+                        <label for="adminUsername">Username</label>
+                        <input type="text" id="adminUsername" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" class="form-control" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="adminLoginSubmit" class="btn">Login</button>
+                    </div>
+                </div>
+                
+                <!-- Sign Up Form (Minimized) -->
+                <div class="admin-form-container" id="signupForm">
+                    <h3>Create Admin Account</h3>
+                    <div class="form-group">
+                        <label for="newAdminUsername">Username</label>
+                        <input type="text" id="newAdminUsername" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newAdminPassword">Password</label>
+                        <input type="password" id="newAdminPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newAdminEmail">Email</label>
+                        <input type="email" id="newAdminEmail" class="form-control" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="adminSignupSubmit" class="btn">Create Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Create New Admin (for Super Admin) -->
+    <div id="createAdminModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="admin-signup-form">
+                <h3>Create New Admin User</h3>
+                <div class="form-group">
+                    <label for="createAdminName">Full Name</label>
+                    <input type="text" id="createAdminName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="createAdminEmail">Email Address</label>
+                    <input type="email" id="createAdminEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="createAdminUsername">Username</label>
+                    <input type="text" id="createAdminUsername" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="createAdminPassword">Password</label>
+                    <input type="password" id="createAdminPassword" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="createAdminRole">Role</label>
+                    <select id="createAdminRole" class="form-control" required>
+                        <option value="admin">Admin</option>
+                        <option value="editor">Editor</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="button" id="createAdminSubmit" class="btn">Create Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Quick Upload (Admin) -->
+    <div id="quickUploadModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="contact-form">
+                <h3 style="text-align: center; margin-bottom: 20px;">Quick Upload</h3>
+                
+                <div class="drop-zone" id="adminDropZone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop files here or click to browse</p>
+                </div>
+                
+                <div class="form-group">
+                    <div class="file-upload-container">
+                        <div class="file-upload-btn">
+                            <i class="fas fa-file-upload"></i> Select Files
+                        </div>
+                        <input type="file" id="adminFileUpload" class="file-upload-input" multiple accept="image/*,video/*">
+                    </div>
+                    <div class="upload-progress">
+                        <div class="upload-progress-bar"></div>
+                    </div>
+                </div>
+                <div class="file-upload-preview" id="adminFilePreview"></div>
+                <div class="form-group">
+                    <label for="uploadCategory">Category</label>
+                    <select id="uploadCategory" class="form-control">
+                        <option value="concert">Concert</option>
+                        <option value="backstage">Backstage</option>
+                        <option value="tour">Tour</option>
+                        <option value="music-video">Music Video</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="uploadTitle">Title/Description</label>
+                    <input type="text" id="uploadTitle" class="form-control">
+                </div>
+                <div class="text-center">
+                    <button type="button" id="adminSubmitUpload" class="btn">Publish Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Database.js Script -->
+    <script src="database.js"></script>
+    <script src="database2.js"></script>
+    <script>
+        // UI Integration
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation and Header
+            const header = document.getElementById('header');
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinksItems = document.querySelectorAll('.nav-links a');
+
+            // Change header on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            navLinksItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling for links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Hero Background Slider
+            const heroBgs = document.querySelectorAll('.hero-bg');
+            let currentBg = 0;
+
+            // Set first background as active
+            heroBgs[0].classList.add('active');
+
+            // Change background every 5 seconds
+            setInterval(() => {
+                heroBgs[currentBg].classList.remove('active');
+                currentBg = (currentBg + 1) % heroBgs.length;
+                heroBgs[currentBg].classList.add('active');
+            }, 5000);
+
+            // Gallery Tabs
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const galleryContainers = document.querySelectorAll('.gallery-container');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons and containers
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    galleryContainers.forEach(container => container.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding container
+                    btn.classList.add('active');
+                    const tabName = btn.getAttribute('data-tab');
+                    document.querySelector(`.gallery-container.${tabName}`).classList.add('active');
+                });
+            });
+
+            // Gallery Modal
+            const galleryModal = document.getElementById('galleryModal');
+            const galleryModalContent = document.getElementById('galleryModalContent');
+            const modalCloses = document.querySelectorAll('.modal-close');
+
+            // Add click event to gallery items
+            function setupGalleryItems() {
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        // Don't open modal if clicking delete button
+                        if (e.target.closest('.delete-media')) {
+                            return;
+                        }
+                        
+                        const videoSrc = item.getAttribute('data-video');
+                        
+                        if (videoSrc) {
+                            // It's a video
+                            galleryModalContent.innerHTML = `
+                                <video class="video-player" controls autoplay>
+                                    <source src="${videoSrc}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            `;
+                        } else {
+                            // It's an image
+                            const imgSrc = item.querySelector('img').getAttribute('src');
+                            galleryModalContent.innerHTML = `<img src="${imgSrc}" alt="Gallery Image">`;
+                        }
+                        
+                        galleryModal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+            }
+
+            // Setup initial gallery items
+            setupGalleryItems();
+
+            // Setup delete media buttons
+            function setupDeleteMediaButtons() {
+                const deleteButtons = document.querySelectorAll('.delete-media');
+                
+                deleteButtons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent opening the modal
+                        
+                        if (!RosariansDatabase.session.isAdmin()) {
+                            alert('You must be logged in as an admin to delete media');
+                            return;
+                        }
+                        
+                        const mediaId = btn.getAttribute('data-id');
+                        const mediaType = btn.getAttribute('data-type');
+                        
+                        if (confirm(`Are you sure you want to delete this ${mediaType}?`)) {
+                            RosariansDatabase.deleteMedia(parseInt(mediaId))
+                                .then(message => {
+                                    alert(message);
+                                    // Remove the item from the DOM
+                                    btn.closest('.gallery-item').remove();
+                                })
+                                .catch(error => {
+                                    alert('Error deleting media: ' + error);
+                                });
+                        }
+                    });
+                });
+            }
+            
+            // Setup delete media buttons
+            setupDeleteMediaButtons();
+
+            // Admin Login
+            const adminLoginBtn = document.getElementById('adminLoginBtn');
+            const adminLoginModal = document.getElementById('adminLoginModal');
+            const adminLoginSubmit = document.getElementById('adminLoginSubmit');
+            const adminSection = document.getElementById('admin');
+
+            adminLoginBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // If already logged in, show admin section
+                if (RosariansDatabase.session.isLoggedIn()) {
+                    adminSection.style.display = 'block';
+                    adminSection.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+                
+                adminLoginModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+
+            adminLoginSubmit.addEventListener('click', () => {
+                const username = document.getElementById('adminUsername').value;
+                const password = document.getElementById('adminPassword').value;
+                
+                RosariansDatabase.loginUser(username, password)
+                    .then(user => {
+                        // Set current user in session
+                        RosariansDatabase.session.setUser(user);
+                        
+                        // Close modal and show admin section
+                        adminLoginModal.style.display = 'none';
+                        adminSection.style.display = 'block';
+                        document.body.style.overflow = 'auto';
+                        
+                        // Scroll to admin section
+                        adminSection.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Update admin users list
+                        updateAdminUsersList();
+                        
+                        // Load bookings
+                        loadBookings();
+                        
+                        // Show admin controls for reviews
+                        document.getElementById('reviewsAdminControls').style.display = 'block';
+                        
+                        // Show delete buttons for media
+                        document.querySelectorAll('.delete-media').forEach(btn => {
+                            btn.style.display = 'flex';
+                        });
+                        
+                        // Show welcome notification
+                        showNotification(`Welcome, ${user.name || user.username}! You are logged in as ${user.role === 'super' ? 'Super Admin' : user.role === 'admin' ? 'Admin' : 'Editor'}`);
+                    })
+                    .catch(error => {
+                        alert('Login failed: ' + error);
+                    });
+            });
+
+            // Admin Signup
+            const adminSignupSubmit = document.getElementById('adminSignupSubmit');
+            
+            adminSignupSubmit.addEventListener('click', () => {
+                const username = document.getElementById('newAdminUsername').value;
+                const email = document.getElementById('newAdminEmail').value;
+                const password = document.getElementById('newAdminPassword').value;
+                
+                // Validate form
+                if (!username || !email || !password) {
+                    alert('Please fill all required fields');
+                    return;
+                }
+                
+                RosariansDatabase.registerUser(username, email, password)
+                    .then(message => {
+                        alert(message);
+                        
+                        // Switch to login tab
+                        document.querySelector('.admin-tab[data-tab="login"]').click();
+                        
+                        // Clear form
+                        document.getElementById('newAdminUsername').value = '';
+                        document.getElementById('newAdminEmail').value = '';
+                        document.getElementById('newAdminPassword').value = '';
+                    })
+                    .catch(error => {
+                        alert('Registration failed: ' + error);
+                    });
+            });
+
+            // Admin Tabs
+            const adminTabs = document.querySelectorAll('.admin-tab');
+            const adminFormContainers = document.querySelectorAll('.admin-form-container');
+
+            adminTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and forms
+                    adminTabs.forEach(t => t.classList.remove('active'));
+                    adminFormContainers.forEach(f => f.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding form
+                    tab.classList.add('active');
+                    const tabName = tab.getAttribute('data-tab');
+                    document.getElementById(tabName + 'Form').classList.add('active');
+                });
+            });
+
+            // Create Admin (for Super Admin)
+            const createAdminBtn = document.getElementById('createAdminBtn');
+            const createAdminModal = document.getElementById('createAdminModal');
+            const createAdminSubmit = document.getElementById('createAdminSubmit');
+            
+            createAdminBtn.addEventListener('click', () => {
+                // Only super admin can create other admins
+                if (!RosariansDatabase.session.isSuperAdmin()) {
+                    alert('You do not have permission to create admin users');
+                    return;
+                }
+                
+                createAdminModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            createAdminSubmit.addEventListener('click', () => {
+                const name = document.getElementById('createAdminName').value;
+                const email = document.getElementById('createAdminEmail').value;
+                const username = document.getElementById('createAdminUsername').value;
+                const password = document.getElementById('createAdminPassword').value;
+                const role = document.getElementById('createAdminRole').value;
+                
+                // Validate form
+                if (!name || !email || !username || !password) {
+                    alert('Please fill all required fields');
+                    return;
+                }
+                
+                RosariansDatabase.createAdminUser(name, username, email, password, role)
+                    .then(message => {
+                        alert(message);
+                        
+                        // Close modal and update admin users list
+                        createAdminModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                        updateAdminUsersList();
+                        
+                        // Clear form
+                        document.getElementById('createAdminName').value = '';
+                        document.getElementById('createAdminEmail').value = '';
+                        document.getElementById('createAdminUsername').value = '';
+                        document.getElementById('createAdminPassword').value = '';
+                    })
+                    .catch(error => {
+                        alert('Error creating admin: ' + error);
+                    });
+            });
+
+            // Admin Quick Upload
+            const quickUploadPhotos = document.getElementById('quickUploadPhotos');
+            const quickUploadVideos = document.getElementById('quickUploadVideos');
+            const quickUploadBulk = document.getElementById('quickUploadBulk');
+            const quickUploadModal = document.getElementById('quickUploadModal');
+            const adminDropZone = document.getElementById('adminDropZone');
+            const adminFileUpload = document.getElementById('adminFileUpload');
+            const adminFilePreview = document.getElementById('adminFilePreview');
+            const adminSubmitUpload = document.getElementById('adminSubmitUpload');
+
+            // Quick upload buttons
+            [quickUploadPhotos, quickUploadVideos, quickUploadBulk].forEach(btn => {
+                btn.addEventListener('click', () => {
+                    quickUploadModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Set accept attribute based on button clicked
+                    if (btn === quickUploadPhotos) {
+                        adminFileUpload.setAttribute('accept', 'image/*');
+                    } else if (btn === quickUploadVideos) {
+                        adminFileUpload.setAttribute('accept', 'video/*');
+                    } else {
+                        adminFileUpload.setAttribute('accept', 'image/*,video/*');
+                    }
+                });
+            });
+
+            // Admin file upload preview
+            adminFileUpload.addEventListener('change', (e) => {
+                const files = e.target.files || e.dataTransfer.files;
+                
+                if (!files.length) return;
+                
+                adminFilePreview.innerHTML = '';
+                
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const previewItem = document.createElement('div');
+                        previewItem.className = 'preview-item';
+                        
+                        if (file.type.match('image.*')) {
+                            previewItem.innerHTML = `
+                                <img src="${e.target.result}" alt="Preview">
+                                <div class="preview-remove" data-index="${i}">×</div>
+                            `;
+                        } else if (file.type.match('video.*')) {
+                            previewItem.innerHTML = `
+                                <video src="${e.target.result}" muted></video>
+                                <div class="preview-remove" data-index="${i}">×</div>
+                            `;
+                        }
+                        
+                        adminFilePreview.appendChild(previewItem);
+                    };
+                    
+                    if (file.type.match('image.*') || file.type.match('video.*')) {
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+
+            // Admin drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                adminDropZone.addEventListener(eventName, e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }, false);
+            });
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                adminDropZone.addEventListener(eventName, () => {
+                    adminDropZone.classList.add('active');
+                }, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                adminDropZone.addEventListener(eventName, () => {
+                    adminDropZone.classList.remove('active');
+                }, false);
+            });
+
+            adminDropZone.addEventListener('drop', (e) => {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                
+                const event = new Event('change');
+                adminFileUpload.files = files;
+                adminFileUpload.dispatchEvent(event);
+            }, false);
+
+            adminDropZone.addEventListener('click', () => {
+                adminFileUpload.click();
+            });
+
+            // Admin quick upload submission
+            adminSubmitUpload.addEventListener('click', () => {
+                const category = document.getElementById('uploadCategory').value;
+                const title = document.getElementById('uploadTitle').value;
+                const fileInput = adminFileUpload;
+                
+                if (!fileInput.files.length) {
+                    alert('Please select at least one file to upload.');
+                    return;
+                }
+                
+                // Show upload progress
+                const uploadProgress = quickUploadModal.querySelector('.upload-progress');
+                const uploadProgressBar = quickUploadModal.querySelector('.upload-progress-bar');
+                uploadProgress.style.display = 'block';
+                
+                // Process each file
+                let filesProcessed = 0;
+                const totalFiles = fileInput.files.length;
+                
+                Array.from(fileInput.files).forEach(file => {
+                    const user = RosariansDatabase.session.getUser();
+                    
+                    RosariansDatabase.uploadMedia(file, user.username, title, '', category)
+                        .then(media => {
+                            filesProcessed++;
+                            uploadProgressBar.style.width = (filesProcessed / totalFiles * 100) + '%';
+                            
+                            // When all files are processed
+                            if (filesProcessed === totalFiles) {
+                                alert('All files uploaded successfully!');
+                                
+                                // Close modal and reset form
+                                quickUploadModal.style.display = 'none';
+                                document.body.style.overflow = 'auto';
+                                document.getElementById('uploadTitle').value = '';
+                                fileInput.value = '';
+                                adminFilePreview.innerHTML = '';
+                                uploadProgress.style.display = 'none';
+                                uploadProgressBar.style.width = '0%';
+                                
+                                // Refresh gallery
+                                loadGallery();
+                            }
+                        })
+                        .catch(error => {
+                            alert('Error uploading file: ' + error);
+                        });
+                });
+            });
+
+            // Review Form Submission
+            const reviewForm = document.getElementById('reviewForm');
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('reviewName').value;
+                const email = document.getElementById('reviewEmail') ? document.getElementById('reviewEmail').value : '';
+                const rating = document.querySelector('input[name="rating"]:checked').value;
+                const comment = document.getElementById('reviewComment').value;
+                
+                RosariansDatabase.addReview(name, email, parseInt(rating), comment)
+                    .then(review => {
+                        alert('Thank you for your review! It has been added successfully.');
+                        
+                        // Reset form
+                        reviewForm.reset();
+                        
+                        // Reload reviews to show the new one immediately
+                        loadReviews();
+                    })
+                    .catch(error => {
+                        alert('Error submitting review: ' + error);
+                    });
+            });
+
+            // Delete All Reviews Button
+            const deleteAllReviewsBtn = document.getElementById('deleteAllReviewsBtn');
+            if (deleteAllReviewsBtn) {
+                deleteAllReviewsBtn.addEventListener('click', function() {
+                    if (confirm('Are you sure you want to delete ALL reviews? This action cannot be undone.')) {
+                        RosariansDatabase.deleteAllReviews()
+                            .then(message => {
+                                alert(message);
+                                loadReviews();
+                            })
+                            .catch(error => {
+                                alert('Error deleting reviews: ' + error);
+                            });
+                    }
+                });
+            }
+
+            // Booking Form Submission
+            const bookingForm = document.getElementById('bookingForm');
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const eventDate = document.getElementById('eventDate').value;
+                const eventType = document.getElementById('eventType').value;
+                const packageType = document.getElementById('package').value;
+                const message = document.getElementById('message').value;
+                
+                RosariansDatabase.addBooking(name, email, phone, eventDate, eventType, packageType, message)
+                    .then(booking => {
+                        alert(`Thank you, ${name}! Your booking request has been submitted. We'll contact you within 24 hours at ${email} to discuss the details of your ${eventType} on ${eventDate}.`);
+                        
+                        // Reset form
+                        bookingForm.reset();
+                        
+                        // If admin is logged in, refresh bookings
+                        if (RosariansDatabase.session.isAdmin()) {
+                            loadBookings();
+                        }
+                        
+                        // Show notification
+                        showNotification(`New booking from ${name} for a ${eventType} on ${eventDate}`);
+                        
+                        // Send email notification
+                        sendBookingEmail(booking);
+                    })
+                    .catch(error => {
+                        alert('Error submitting booking: ' + error);
+                    });
+            });
+
+            // Function to send booking email notification
+            function sendBookingEmail(booking) {
+                // In a real implementation, this would use a server-side API
+                // For this demo, we'll simulate sending an email
+                console.log(`Email notification would be sent to rosarianlanka@gmail.com with booking details:`, booking);
+                
+                // Show notification about email
+                showNotification(`Email notification sent to rosarianlanka@gmail.com`);
+            }
+
+            // Close Modals
+            modalCloses.forEach(close => {
+                close.addEventListener('click', () => {
+                    galleryModal.style.display = 'none';
+                    adminLoginModal.style.display = 'none';
+                    quickUploadModal.style.display = 'none';
+                    createAdminModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    
+                    // Stop video if playing
+                    const videoPlayer = document.querySelector('.video-player');
+                    if (videoPlayer) {
+                        videoPlayer.pause();
+                    }
+                });
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === galleryModal) {
+                    galleryModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    
+                    // Stop video if playing
+                    const videoPlayer = document.querySelector('.video-player');
+                    if (videoPlayer) {
+                        videoPlayer.pause();
+                    }
+                }
+                if (e.target === adminLoginModal) {
+                    adminLoginModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+                if (e.target === quickUploadModal) {
+                    quickUploadModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+                if (e.target === createAdminModal) {
+                    createAdminModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Add dynamic year to copyright
+            document.querySelector('.copyright p').innerHTML = '&copy; ' + new Date().getFullYear() + ' Rosarians. All Rights Reserved.';
+
+            // Load gallery on page load
+            loadGallery();
+            
+            // Load reviews on page load
+            loadReviews();
+            
+            // Check if admin is logged in
+            if (RosariansDatabase.session.isLoggedIn()) {
+                // Show admin section
+                adminSection.style.display = 'block';
+                
+                // Update admin users list
+                updateAdminUsersList();
+                
+                // Load bookings
+                loadBookings();
+                
+                // Show admin controls for reviews
+                document.getElementById('reviewsAdminControls').style.display = 'block';
+                
+                // Show delete buttons for media
+                document.querySelectorAll('.delete-media').forEach(btn => {
+                    btn.style.display = 'flex';
+                });
+            } else {
+                // Hide admin controls
+                document.getElementById('reviewsAdminControls').style.display = 'none';
+                
+                // Hide delete buttons for media
+                document.querySelectorAll('.delete-media').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            }
+            
+            // Setup real-time review observer
+            setupReviewObserver();
+        });
+
+        // Function to load gallery
+        function loadGallery() {
+            // Load photos from database
+            RosariansDatabase.getMediaByType('photo')
+                .then(photos => {
+                    const photosContainer = document.querySelector('.gallery-container.photos');
+                    if (photosContainer) {
+                        // Keep existing items
+                        const existingItems = Array.from(photosContainer.querySelectorAll('.gallery-item:not([data-db-id])'));
+                        
+                        // Clear container
+                        photosContainer.innerHTML = '';
+                        
+                        // Add existing items back
+                        existingItems.forEach(item => {
+                            photosContainer.appendChild(item);
+                        });
+                        
+                        // Add photos from database
+                        photos.forEach(photo => {
+                            RosariansDatabase.getMediaById(photo.id)
+                                .then(fullPhoto => {
+                                    const galleryItem = document.createElement('div');
+                                    galleryItem.className = 'gallery-item';
+                                    galleryItem.setAttribute('data-db-id', photo.id);
+                                    
+                                    galleryItem.innerHTML = `
+                                        <img src="${fullPhoto.data}" alt="${fullPhoto.title || 'Gallery Image'}">
+                                        <div class="gallery-overlay">
+                                            <p>${fullPhoto.title || fullPhoto.category || 'Gallery Image'}</p>
+                                        </div>
+                                        <div class="delete-media" data-type="photo" data-id="${photo.id}"><i class="fas fa-trash"></i></div>
+                                    `;
+                                    
+                                    // Add click event to open modal
+                                    galleryItem.addEventListener('click', function(e) {
+                                        // Don't open modal if clicking delete button
+                                        if (e.target.closest('.delete-media')) {
+                                            return;
+                                        }
+                                        
+                                        const galleryModal = document.getElementById('galleryModal');
+                                        const galleryModalContent = document.getElementById('galleryModalContent');
+                                        
+                                        galleryModalContent.innerHTML = `<img src="${fullPhoto.data}" alt="${fullPhoto.title || 'Gallery Image'}">`;
+                                        galleryModal.style.display = 'block';
+                                        document.body.style.overflow = 'hidden';
+                                    });
+                                    
+                                    // Add delete event
+                                    const deleteBtn = galleryItem.querySelector('.delete-media');
+                                    deleteBtn.addEventListener('click', function(e) {
+                                        e.stopPropagation();
+                                        
+                                        if (!RosariansDatabase.session.isAdmin()) {
+                                            alert('You must be logged in as an admin to delete media');
+                                            return;
+                                        }
+                                        
+                                        if (confirm('Are you sure you want to delete this photo?')) {
+                                            RosariansDatabase.deleteMedia(photo.id)
+                                                .then(message => {
+                                                    alert(message);
+                                                    galleryItem.remove();
+                                                })
+                                                .catch(error => {
+                                                    alert('Error deleting photo: ' + error);
+                                                });
+                                        }
+                                    });
+                                    
+                                    // Hide delete button if not admin
+                                    if (!RosariansDatabase.session.isAdmin()) {
+                                        deleteBtn.style.display = 'none';
+                                    }
+                                    
+                                    photosContainer.appendChild(galleryItem);
+                                })
+                                .catch(error => {
+                                    console.error('Error loading photo:', error);
+                                });
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading photos:', error);
+                });
+            
+            // Load videos from database
+            RosariansDatabase.getMediaByType('video')
+                .then(videos => {
+                    const videosContainer = document.querySelector('.gallery-container.videos');
+                    if (videosContainer) {
+                        // Keep existing items
+                        const existingItems = Array.from(videosContainer.querySelectorAll('.gallery-item:not([data-db-id])'));
+                        
+                        // Clear container
+                        videosContainer.innerHTML = '';
+                        
+                        // Add existing items back
+                        existingItems.forEach(item => {
+                            videosContainer.appendChild(item);
+                        });
+                        
+                        // Add videos from database
+                        videos.forEach(video => {
+                            RosariansDatabase.getMediaById(video.id)
+                                .then(fullVideo => {
+                                    const galleryItem = document.createElement('div');
+                                    galleryItem.className = 'gallery-item';
+                                    galleryItem.setAttribute('data-db-id', video.id);
+                                    galleryItem.setAttribute('data-video', fullVideo.data);
+                                    
+                                    galleryItem.innerHTML = `
+                                        <img src="https://source.unsplash.com/random/400x400?concert" alt="${fullVideo.title || 'Gallery Video'}">
+                                        <div class="gallery-overlay">
+                                            <p>${fullVideo.title || fullVideo.category || 'Gallery Video'}</p>
+                                        </div>
+                                        <div class="delete-media" data-type="video" data-id="${video.id}"><i class="fas fa-trash"></i></div>
+                                    `;
+                                    
+                                    // Add click event to open modal
+                                    galleryItem.addEventListener('click', function(e) {
+                                        // Don't open modal if clicking delete button
+                                        if (e.target.closest('.delete-media')) {
+                                            return;
+                                        }
+                                        
+                                        const galleryModal = document.getElementById('galleryModal');
+                                        const galleryModalContent = document.getElementById('galleryModalContent');
+                                        
+                                        galleryModalContent.innerHTML = `
+                                            <video class="video-player" controls autoplay>
+                                                <source src="${fullVideo.data}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        `;
+                                        
+                                        galleryModal.style.display = 'block';
+                                        document.body.style.overflow = 'hidden';
+                                    });
+                                    
+                                    // Add delete event
+                                    const deleteBtn = galleryItem.querySelector('.delete-media');
+                                    deleteBtn.addEventListener('click', function(e) {
+                                        e.stopPropagation();
+                                        
+                                        if (!RosariansDatabase.session.isAdmin()) {
+                                            alert('You must be logged in as an admin to delete media');
+                                            return;
+                                        }
+                                        
+                                        if (confirm('Are you sure you want to delete this video?')) {
+                                            RosariansDatabase.deleteMedia(video.id)
+                                                .then(message => {
+                                                    alert(message);
+                                                    galleryItem.remove();
+                                                })
+                                                .catch(error => {
+                                                    alert('Error deleting video: ' + error);
+                                                });
+                                        }
+                                    });
+                                    
+                                    // Hide delete button if not admin
+                                    if (!RosariansDatabase.session.isAdmin()) {
+                                        deleteBtn.style.display = 'none';
+                                    }
+                                    
+                                    videosContainer.appendChild(galleryItem);
+                                })
+                                .catch(error => {
+                                    console.error('Error loading video:', error);
+                                });
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading videos:', error);
+                });
+        }
+
+        // Function to load reviews
+        function loadReviews() {
+            RosariansDatabase.getAllReviews()
+                .then(reviews => {
+                    const reviewsList = document.querySelector('.reviews-list');
+                    if (reviewsList) {
+                        // Keep existing items
+                        const existingItems = Array.from(reviewsList.querySelectorAll('.review-item:not([data-db-id])'));
+                        
+                        // Clear list
+                        reviewsList.innerHTML = '';
+                        
+                        // Add existing items back
+                        existingItems.forEach(item => {
+                            reviewsList.appendChild(item);
+                        });
+                        
+                        // Add reviews from database
+                        reviews.forEach(review => {
+                            const reviewItem = document.createElement('div');
+                            reviewItem.className = 'review-item';
+                            reviewItem.setAttribute('data-db-id', review.id);
+                            
+                            // Generate stars based on rating
+                            let stars = '';
+                            for (let i = 1; i <= 5; i++) {
+                                if (i <= review.rating) {
+                                    stars += '<i class="fas fa-star"></i>';
+                                } else if (i - 0.5 <= review.rating) {
+                                    stars += '<i class="fas fa-star-half-alt"></i>';
+                                } else {
+                                    stars += '<i class="far fa-star"></i>';
+                                }
+                            }
+                            
+                            reviewItem.innerHTML = `
+                                <div class="review-header">
+                                    <div class="review-info">
+                                        <div class="review-name">${review.username}</div>
+                                        <div class="review-date">${new Date(review.date).toLocaleDateString()}</div>
+                                    </div>
+                                </div>
+                                <div class="review-rating">
+                                    ${stars}
+                                </div>
+                                <div class="review-content">
+                                    <p>${review.comment}</p>
+                                </div>
+                            `;
+                            
+                            // Add admin actions if user is admin
+                            if (RosariansDatabase.session.isAdmin()) {
+                                const adminActions = document.createElement('div');
+                                adminActions.className = 'admin-upload-actions';
+                                
+                                // Add delete button
+                                const deleteBtn = document.createElement('button');
+                                deleteBtn.className = 'admin-btn reject';
+                                deleteBtn.textContent = 'Delete';
+                                deleteBtn.addEventListener('click', function() {
+                                    if (confirm('Are you sure you want to delete this review?')) {
+                                        RosariansDatabase.deleteReview(review.id)
+                                            .then(message => {
+                                                alert(message);
+                                                loadReviews();
+                                            })
+                                            .catch(error => {
+                                                alert('Error deleting review: ' + error);
+                                            });
+                                    }
+                                });
+                                adminActions.appendChild(deleteBtn);
+                                
+                                reviewItem.appendChild(adminActions);
+                            }
+                            
+                            reviewsList.appendChild(reviewItem);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading reviews:', error);
+                });
+        }
+
+        // Real-time review updates using MutationObserver
+        function setupReviewObserver() {
+            const reviewsList = document.querySelector('.reviews-list');
+            if (!reviewsList) return;
+
+            const observer = new MutationObserver((mutations) => {
+                // Reload reviews on any change
+                loadReviews();
+            });
+
+            observer.observe(reviewsList, {
+                childList: true,
+                subtree: true
+            });
+        }
+
+        // Function to load bookings
+        function loadBookings() {
+            if (!RosariansDatabase.session.isAdmin()) return;
+            
+            RosariansDatabase.getAllBookings()
+                .then(bookings => {
+                    const recentBookings = document.getElementById('recentBookings');
+                    if (recentBookings) {
+                        recentBookings.innerHTML = '';
+                        
+                        // Sort bookings by date (newest first)
+                        bookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                        
+                        // Add bookings to the list
+                        bookings.forEach(booking => {
+                            const bookingItem = document.createElement('div');
+                            bookingItem.className = 'admin-upload-item';
+                            bookingItem.setAttribute('data-db-id', booking.id);
+                            
+                            bookingItem.innerHTML = `
+                                <div class="admin-upload-info">
+                                    <p><strong>Name:</strong> ${booking.name}</p>
+                                    <p><strong>Email:</strong> ${booking.email}</p>
+                                    <p><strong>Phone:</strong> ${booking.phone}</p>
+                                    <p><strong>Event Date:</strong> ${booking.eventDate}</p>
+                                    <p><strong>Event Type:</strong> ${booking.eventType}</p>
+                                    <p><strong>Package:</strong> ${booking.package}</p>
+                                    <p><strong>Status:</strong> <span class="status-${booking.status}">${booking.status}</span></p>
+                                </div>
+                                <div class="admin-upload-actions">
+                                    <select class="form-control status-select">
+                                        <option value="pending" ${booking.status === 'pending' ? 'selected' : ''}>Pending</option>
+                                        <option value="confirmed" ${booking.status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+                                        <option value="completed" ${booking.status === 'completed' ? 'selected' : ''}>Completed</option>
+                                        <option value="cancelled" ${booking.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+                                    </select>
+                                    <button class="admin-btn approve">Update</button>
+                                </div>
+                            `;
+                            
+                            // Add event listener to update button
+                            const updateBtn = bookingItem.querySelector('.admin-btn.approve');
+                            updateBtn.addEventListener('click', function() {
+                                const statusSelect = bookingItem.querySelector('.status-select');
+                                const newStatus = statusSelect.value;
+                                
+                                RosariansDatabase.updateBookingStatus(booking.id, newStatus)
+                                    .then(message => {
+                                        alert(message);
+                                        loadBookings();
+                                    })
+                                    .catch(error => {
+                                        alert('Error updating booking status: ' + error);
+                                    });
+                            });
+                            
+                            recentBookings.appendChild(bookingItem);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading bookings:', error);
+                });
+        }
+
+        // Function to update admin users list
+        function updateAdminUsersList() {
+            if (!RosariansDatabase.session.isAdmin()) return;
+            
+            RosariansDatabase.getAllAdminUsers()
+                .then(users => {
+                    const adminUsersList = document.getElementById('adminUsersList');
+                    if (adminUsersList) {
+                        adminUsersList.innerHTML = '';
+                        
+                        users.forEach(user => {
+                            const userItem = document.createElement('div');
+                            userItem.className = 'admin-user-item';
+                            
+                            // Only show delete button for non-super admin users and only to super admin
+                            const deleteButton = RosariansDatabase.session.isSuperAdmin() && user.role !== 'super' ? 
+                                `<button class="admin-btn reject" data-username="${user.username}">Remove</button>` : '';
+                            
+                            userItem.innerHTML = `
+                                <div class="admin-user-info">
+                                    <strong>${user.name || user.username}</strong> (${user.username})
+                                    <span class="admin-user-role ${user.role}">${user.role}</span>
+                                    <div>${user.email}</div>
+                                </div>
+                                <div class="admin-user-actions">
+                                    ${deleteButton}
+                                </div>
+                            `;
+                            
+                            adminUsersList.appendChild(userItem);
+                        });
+                        
+                        // Add event listeners to delete buttons
+                        const deleteButtons = adminUsersList.querySelectorAll('.admin-btn.reject');
+                        deleteButtons.forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                const username = this.getAttribute('data-username');
+                                
+                                if (confirm('Are you sure you want to remove this admin user?')) {
+                                    RosariansDatabase.deleteAdminUser(username)
+                                        .then(message => {
+                                            alert(message);
+                                            updateAdminUsersList();
+                                        })
+                                        .catch(error => {
+                                            alert('Error removing admin user: ' + error);
+                                        });
+                                }
+                            });
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading admin users:', error);
+                });
+        }
+
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notificationMessage');
+            
+            notificationMessage.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
+
